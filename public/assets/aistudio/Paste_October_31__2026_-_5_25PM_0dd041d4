@@ -1,0 +1,1022 @@
+# PROJECT: DATAKRITI
+## AI-Powered Kannada Document Digitization and Intelligence Platform
+
+Act as a senior full-stack software engineer, AI/ML engineer, product designer, UI/UX architect and technical lead.
+
+Build a complete, functional, modern, production-quality **hackathon MVP named DataKriti**.
+
+This is not a basic website, static prototype, landing page, or collection of disconnected screens. It must be a working AI-powered document digitization application with a polished user experience, real backend functionality, meaningful AI integrations and a complete end-to-end workflow.
+
+Your responsibility is to build the application, implement its features, connect the frontend and backend, test functionality and resolve errors.
+
+Do not merely provide instructions or code snippets. Implement the application in the project workspace.
+
+---
+
+# 1. PRODUCT VISION
+
+**Product Name:** DataKriti
+
+**Tagline:** From Kannada Documents to Digital Knowledge.
+
+**Product Description:**
+
+DataKriti is an AI-powered Kannada document intelligence platform designed to convert printed, scanned and supported handwritten Kannada documents into searchable, editable, understandable and accessible digital information.
+
+The application should help users:
+
+- Digitize Kannada documents.
+- Restore faded, damaged and low-quality document images.
+- Extract Kannada text using AI-powered OCR.
+- Identify and correct OCR mistakes.
+- Translate Kannada into eight Indian languages.
+- Understand complicated Kannada documents.
+- Ask questions about uploaded documents.
+- Extract important information automatically.
+- Listen to Kannada text using speech synthesis.
+- Store, search and access previously digitized documents.
+- Access previously saved content even without an internet connection.
+
+The product should combine document digitization, restoration, verification, translation and AI-powered understanding into one unified application.
+
+Its experience should feel like a premium AI document intelligence product rather than a traditional language-learning website or generic AI-generated dashboard.
+
+# 2. TECHNOLOGY AND ARCHITECTURE
+
+Build using the following architecture:
+
+**Frontend**
+- React.
+- TypeScript.
+- Modern CSS and Tailwind CSS where appropriate.
+- Component-based architecture.
+- Responsive layouts.
+- Lucide icons.
+- Smooth, meaningful interactions.
+
+**Backend**
+- Use the supported Node.js server runtime in Google AI Studio Build mode.
+- Create clean server-side API routes.
+- Keep all AI integrations and sensitive operations on the server.
+- Implement proper error handling and validation.
+
+**Artificial Intelligence**
+- Use the Gemini API through the supported Google AI Studio integration.
+- Use a currently available model suitable for multimodal document understanding and image-based Kannada OCR.
+- Use a suitable supported model or service for text-to-speech.
+- Do not hardcode obsolete model identifiers.
+- Keep model names configurable.
+- Use image understanding for document OCR and document analysis.
+- Use text generation for translation, summaries and question answering.
+
+**Database and Storage**
+- Prefer Firebase Authentication, Firestore and Firebase Storage if supported by the generated project.
+- If Firebase setup requires external credentials that are unavailable, implement a clearly separated local/demo persistence layer that works immediately.
+- Keep the architecture ready for Firebase integration.
+- Never pretend that an external database or cloud storage is connected when it is not.
+
+**Secrets**
+- Store Gemini API keys and other credentials in server-side environment variables or the Google AI Studio Secrets facility.
+- Never expose secrets in frontend code.
+- Never commit API keys to GitHub.
+
+**Architecture requirements**
+- Separate frontend components, backend routes, services, types and utilities.
+- Avoid putting the entire application into one large component.
+- Use reusable components.
+- Create a clear data model for documents, OCR results, translations, summaries and corrections.
+- Implement loading, success, empty and error states.
+- Do not use fake API responses to simulate completed functionality.
+
+# 3. DESIGN SYSTEM AND VISUAL IDENTITY
+
+The visual design is extremely important.
+
+Create a premium, modern, stylized, aesthetic and sophisticated interface.
+
+Design direction:
+
+**Premium AI SaaS + Modern Editorial Design + Subtle Kannada Cultural Identity.**
+
+The application should feel comparable in quality to leading modern productivity and AI applications.
+
+Avoid generic AI-generated website designs.
+
+Avoid:
+- Excessive gradients.
+- Unnecessary glassmorphism.
+- Oversized headings.
+- Too many cards.
+- Excessive rounded containers.
+- Random decorative elements.
+- Excessive animations.
+- Repetitive dashboard layouts.
+- Emoji-based navigation icons.
+- Placeholder charts and meaningless statistics.
+
+Use a carefully designed visual hierarchy.
+
+**Default light theme:**
+- Warm ivory background: #F7F4EE
+- Midnight indigo: #222A48
+- Lavender accent: #A89BEA
+- Muted gold: #D6A76C
+- Sage: #DCE8DE
+- Neutral stone: #E9E4DC
+
+**Default dark theme:**
+- Background: #151827
+- Surface: #22263A
+- Elevated surface: #292E43
+- Accent: #B7AAFF
+- Text: #F3F1FA
+
+**Typography:**
+- Manrope or Inter for English.
+- Noto Sans Kannada for Kannada interface text.
+- Noto Serif Kannada where an editorial appearance is appropriate.
+
+Use:
+- Consistent spacing.
+- Subtle borders.
+- Beautiful typography.
+- Refined shadows.
+- Proper alignment.
+- High-quality icons.
+- Smooth transitions.
+- Responsive layouts.
+- Accessible contrast.
+
+The application must work beautifully on desktop, tablet and mobile.
+
+# 4. APPLICATION NAVIGATION
+
+Create a collapsible sidebar with the following navigation:
+
+1. Dashboard
+2. Digitize Documents
+3. Restoration Studio
+4. OCR Verification
+5. Translation
+6. AI Intelligence
+7. Ask Your Document
+8. Voice Reader
+9. Document Library
+10. Export Centre
+11. Settings
+
+Use appropriate Lucide icons.
+
+The sidebar should have:
+- DataKriti logo and wordmark.
+- Active navigation indicators.
+- Collapsible behaviour.
+- Tooltips when collapsed.
+- A user profile section.
+- Theme and appearance controls.
+
+Avoid creating unnecessary separate pages. Related functionality should be grouped into intuitive workspaces.
+
+# 5. FEATURE IMPLEMENTATION
+
+Implement the following 21 capabilities.
+
+## FEATURE 1: SMART DOCUMENT UPLOAD
+
+Create a modern document upload workspace.
+
+Supported formats:
+- JPG
+- JPEG
+- PNG
+- PDF
+
+Implement:
+- Drag-and-drop upload.
+- Browse files.
+- Multiple image uploads.
+- Multi-page PDF support.
+- Document preview.
+- File size and format validation.
+- Upload progress.
+- Remove and replace files.
+- Camera capture where supported.
+- Page navigation for multi-page documents.
+
+After uploading, show:
+- Filename.
+- File type.
+- Number of pages.
+- Preview.
+- Processing status.
+
+Provide a prominent "Digitize Document" action.
+
+Do not begin expensive AI processing before the user initiates it.
+
+## FEATURE 2: KANNADA OCR ENGINE
+
+This is one of the most important features.
+
+Implement actual AI-powered Kannada OCR using Gemini's multimodal capabilities.
+
+Requirements:
+- Extract printed Kannada text.
+- Support mixed Kannada and English.
+- Support multi-page documents.
+- Preserve Kannada Unicode characters.
+- Maintain paragraph structure.
+- Maintain reasonable reading order.
+- Extract headings and lists where identifiable.
+- Handle different image resolutions.
+- Support handwriting where model performance permits.
+
+Preserve the original extracted Kannada text.
+
+Never silently translate, rewrite or correct the OCR output.
+
+If the system cannot confidently read a character, mark it as uncertain instead of inventing text.
+
+Display:
+- Extracted text.
+- Page number.
+- Processing status.
+- OCR processing errors.
+- Original document reference.
+
+## FEATURE 3: DOCUMENT IMAGE ENHANCEMENT
+
+Create a dedicated Document Restoration Studio.
+
+Implement real image-processing operations wherever possible:
+
+- Brightness adjustment.
+- Contrast enhancement.
+- Grayscale conversion.
+- Sharpening.
+- Noise reduction.
+- Rotation correction.
+- Deskewing.
+- Shadow reduction.
+- Faded-text enhancement.
+
+Allow users to:
+- View the original image.
+- View the enhanced image.
+- Compare before and after.
+- Adjust enhancement settings.
+- Reset modifications.
+- Use the enhanced image for OCR.
+
+Never overwrite the original uploaded file.
+
+Keep original and enhanced versions separately.
+
+## FEATURE 4: OCR VERIFICATION AND TEXT EDITOR
+
+Build a professional OCR verification workspace.
+
+Layout:
+- Original document on the left.
+- Extracted editable text on the right.
+
+Implement:
+- Editable extracted text.
+- Word and paragraph selection.
+- Copy functionality.
+- Save corrections.
+- Undo and redo.
+- Page navigation.
+- Zoom controls.
+- Highlighting of uncertain words.
+- Correction status.
+- Original versus corrected text comparison.
+
+Clicking an uncertain word should navigate to its corresponding source region when region coordinates are available.
+
+Maintain the original OCR output separately from the corrected output.
+
+## FEATURE 5: MULTILINGUAL TRANSLATION
+
+Support the following target languages:
+
+1. English
+2. Marathi
+3. Hindi
+4. Punjabi
+5. Gujarati
+6. Telugu
+7. Tamil
+8. Malayalam
+
+Source language: Kannada.
+
+Requirements:
+- Translate individual sentences.
+- Translate paragraphs.
+- Translate entire documents.
+- Allow users to select target languages independently.
+- Preserve original Kannada content.
+- Provide copy functionality.
+- Allow downloading translated text.
+- Show loading and error states.
+- Preserve meaning and context.
+- Support mixed Kannada-English source content.
+
+Use actual AI translation rather than hardcoded sample translations.
+
+The translation selector must allow users to switch target languages without uploading the original document again.
+
+## FEATURE 6: AI DOCUMENT SUMMARY
+
+Generate meaningful summaries from extracted document text.
+
+Implement:
+- Short summary.
+- Detailed summary.
+- Main subject.
+- Important points.
+- Key instructions.
+- Important dates.
+- Main conclusions.
+- Simple-language explanation.
+
+Allow users to select summary length.
+
+Summaries must be grounded in the actual document.
+
+Do not fabricate information.
+
+## FEATURE 7: DOCUMENT EXPORT
+
+Implement working exports:
+
+- TXT.
+- DOCX.
+- Searchable PDF.
+- Translated text export.
+
+Requirements:
+- Export corrected OCR text.
+- Preserve Kannada Unicode.
+- Support multi-page documents.
+- Preserve headings and paragraph formatting where possible.
+- Give downloaded files meaningful filenames.
+
+A searchable PDF must contain an actual searchable text layer, not just an image with a PDF extension.
+
+## FEATURE 8: ASK YOUR DOCUMENT
+
+Create an AI-powered document conversation interface.
+
+Users should be able to ask questions about their uploaded documents.
+
+Examples:
+- What is this document about?
+- Explain this document in English.
+- What are the important instructions?
+- Who issued this document?
+- What is the application deadline?
+- Summarize the third paragraph.
+- Explain the difficult Kannada words.
+
+Requirements:
+- Use the extracted document text as the knowledge source.
+- Support follow-up questions.
+- Maintain conversation context for the current document.
+- Show source references.
+- Display page numbers where available.
+- Never invent answers.
+- If the information is missing, explicitly say that it is not found in the uploaded document.
+
+## FEATURE 9: OCR CONFIDENCE HEATMAP
+
+Create an OCR quality and verification visualization.
+
+Use:
+- Green for high-confidence text.
+- Yellow for text needing review.
+- Red for low-confidence text.
+
+Implement:
+- Highlight uncertain words.
+- Show confidence or review indicators.
+- Allow clicking an indicator to inspect the corresponding source region.
+- Show the number of words requiring review.
+- Allow users to correct uncertain words.
+
+Important:
+Do not invent numerical OCR confidence percentages.
+
+Use genuine confidence scores when supplied by the OCR engine. If using model-based estimates, clearly label them as estimated review scores rather than calibrated probabilities.
+
+## FEATURE 10: SMART INFORMATION EXTRACTION
+
+Automatically identify important information from the document.
+
+Extract where available:
+- Person names.
+- Organization names.
+- Addresses.
+- Locations.
+- Dates.
+- Deadlines.
+- Phone numbers.
+- Email addresses.
+- Monetary amounts.
+- Important instructions.
+- Document references.
+
+Display the extracted information in organized sections.
+
+Allow users to click an extracted item and navigate to its source text.
+
+Do not invent missing fields.
+
+## FEATURE 11: KANNADA VOICE READER
+
+Implement actual Kannada text-to-speech.
+
+Requirements:
+- Read extracted Kannada text aloud.
+- Play and pause.
+- Resume playback.
+- Stop playback.
+- Adjust reading speed.
+- Read selected paragraphs.
+- Read translated text where supported.
+- Display playback progress.
+
+Highlight the currently spoken sentence or paragraph when timing information is available.
+
+Use an actual supported speech synthesis service or browser speech synthesis when a suitable Kannada voice exists.
+
+Do not display a successful audio result if audio generation fails.
+
+## FEATURE 12: SEARCHABLE DOCUMENT LIBRARY
+
+Create a document management workspace.
+
+Implement:
+- Saved documents.
+- Search by filename.
+- Search by extracted text.
+- Search by Kannada keywords.
+- Search by translated keywords.
+- Filter by date.
+- Filter by document type.
+- View processing status.
+- Reopen previous documents.
+- Delete documents.
+- Favourite documents.
+
+Display useful metadata:
+- Document name.
+- Upload date.
+- Page count.
+- Processing status.
+- Available translations.
+
+Persist documents and associated results using the configured storage layer.
+
+## FEATURE 13: KANNADA DOCUMENT RECOVERY INTELLIGENCE
+
+This is a major differentiating capability.
+
+Create an intelligent document condition assessment system.
+
+Before OCR, analyze the uploaded document and identify possible issues:
+
+- Blur.
+- Faded text.
+- Low contrast.
+- Shadows.
+- Skew.
+- Rotation.
+- Noise.
+- Poor lighting.
+- Low resolution.
+
+Provide:
+- Document quality assessment.
+- Detected issues.
+- Recommended enhancement operations.
+- Automatic restoration option.
+- Manual restoration controls.
+- Before-and-after comparison.
+
+Explain why an enhancement operation is recommended.
+
+The system should preserve the original image.
+
+Do not claim to recover information that is physically missing or illegible.
+
+## FEATURE 14: KANNADA OCR ERROR INTELLIGENCE
+
+Develop a correction assistance system specifically for Kannada OCR.
+
+Implement:
+- Identify uncertain Kannada words.
+- Highlight potentially incorrect characters.
+- Suggest alternative readings.
+- Compare the suggested text with the original image.
+- Allow users to accept a suggestion.
+- Allow users to reject a suggestion.
+- Allow manual correction.
+- Maintain correction history.
+
+Use contextual language understanding to generate suggestions.
+
+Never automatically replace uncertain words without user approval.
+
+If the original image is unclear, explain that the suggestion requires manual verification.
+
+## FEATURE 15: KANNADA-TO-SIMPLE-LANGUAGE MODE
+
+Implement a language simplification tool.
+
+Allow users to transform complicated Kannada text into:
+- Simple Kannada.
+- Easy-to-understand English.
+- Hindi explanation.
+
+Implement:
+- Difficult-word explanations.
+- Simplified sentence structure.
+- Paragraph-level simplification.
+- Preservation of the original meaning.
+
+Do not change legal, administrative or historical meaning while simplifying.
+
+Show original and simplified text side by side.
+
+## FEATURE 16: SOURCE-LINKED AI ANSWERS
+
+Integrate source references into the document intelligence system.
+
+Whenever an AI answer is generated:
+- Identify the supporting extracted passage.
+- Display the source page.
+- Display the paragraph or text snippet.
+- Allow users to open the referenced page.
+- Highlight the supporting text when possible.
+
+If no supporting passage exists, the system must clearly communicate that the document does not contain the answer.
+
+This feature must work with Ask Your Document and information extraction.
+
+## FEATURE 17: DOCUMENT UNDERSTANDING MODES
+
+Allow users to select a document category.
+
+Available modes:
+
+1. Government Document.
+2. Educational Document.
+3. Historical Document.
+4. Newspaper or Article.
+5. Personal Document.
+6. General Document.
+
+Adapt the AI analysis to the selected category.
+
+For example:
+
+Government Document:
+- Identify instructions.
+- Extract deadlines.
+- Identify issuing authority.
+- Extract eligibility conditions.
+
+Educational Document:
+- Identify important concepts.
+- Generate study notes.
+- Explain difficult terms.
+- Extract key points.
+
+Historical Document:
+- Summarize historical content.
+- Identify names, dates and places.
+- Highlight potentially important references.
+
+Newspaper or Article:
+- Identify headline and subject.
+- Extract key facts.
+- Summarize the article.
+
+Personal Document:
+- Extract relevant dates and details.
+- Summarize important information.
+
+Do not assume authenticity or historical accuracy merely from the document category.
+
+## FEATURE 18: OFFLINE MODE
+
+Implement a realistic offline-first experience.
+
+Requirements:
+- Allow access to previously saved documents.
+- Store previously extracted text locally.
+- Allow users to search locally saved text.
+- Allow manual text editing offline.
+- Preserve saved corrections.
+- Show online/offline connectivity status.
+- Show which functions require an internet connection.
+- Synchronize pending changes when connectivity returns, where supported.
+
+Use appropriate browser storage such as IndexedDB.
+
+Important:
+New Gemini-powered OCR, translation and cloud AI operations require connectivity unless a genuine local model is separately implemented.
+
+Do not simulate offline AI functionality.
+
+Clearly distinguish available offline functions from online-only functions.
+
+## FEATURE 19: MODERN AND STYLIZED USER INTERFACE
+
+Create a premium, visually distinctive interface.
+
+Design priorities:
+- Modern editorial aesthetic.
+- Premium AI productivity application.
+- Subtle Kannada cultural identity.
+- Clean layouts.
+- Professional typography.
+- Excellent spacing.
+- Intuitive navigation.
+- Smooth interactions.
+- Responsive components.
+- Beautiful document previews.
+- Useful empty states.
+- Clear processing feedback.
+
+The UI must be functional and not merely decorative.
+
+Every visible button must have a meaningful action.
+
+Avoid generic AI dashboard templates.
+
+## FEATURE 20: LIGHT AND DARK THEMES
+
+Implement a complete theme system.
+
+Requirements:
+- Light mode.
+- Dark mode.
+- Theme switching.
+- Persist theme preference.
+- Update all application components.
+- Maintain readable text contrast.
+- Ensure charts, previews, editors, dialogs and navigation also follow the theme.
+
+## FEATURE 21: CUSTOM INTERFACE COLOR SELECTOR
+
+Allow users to customize the application's accent color.
+
+Provide the following choices:
+
+1. Red.
+2. Yellow.
+3. Green.
+4. Blue.
+5. Black.
+6. Pink.
+7. Purple.
+8. White.
+9. Orange.
+
+Requirements:
+- Display attractive color swatches.
+- Apply the selected accent consistently.
+- Update buttons, active navigation, highlights, selection indicators and interactive controls.
+- Preserve accessibility and contrast.
+- Persist the selected preference.
+- Work in both light and dark themes.
+- Provide a reset-to-default option.
+
+Do not simply recolor the entire background. Use a coordinated design token system.
+
+# 6. DASHBOARD DESIGN
+
+Create a polished dashboard with:
+
+- Welcome section.
+- Prominent "Digitize New Document" action.
+- Recent documents.
+- Processing activity.
+- Quick actions.
+- Document statistics based on real stored data.
+- Recent translations.
+- Offline availability indicator.
+
+Avoid fake statistics.
+
+When the user has no documents, display a beautiful empty state encouraging their first upload.
+
+# 7. COMPLETE USER WORKFLOW
+
+The most important part of DataKriti is the complete end-to-end experience.
+
+Implement this workflow:
+
+STEP 1: User opens DataKriti.
+
+STEP 2: User uploads a Kannada document.
+
+STEP 3: Application validates the file and previews it.
+
+STEP 4: Recovery Intelligence evaluates document quality.
+
+STEP 5: Application recommends or performs enhancement.
+
+STEP 6: User compares original and enhanced images.
+
+STEP 7: User initiates Kannada OCR.
+
+STEP 8: Extracted Kannada text appears in the verification editor.
+
+STEP 9: Confidence indicators identify text that needs review.
+
+STEP 10: User corrects uncertain text.
+
+STEP 11: Corrected text becomes the source for subsequent AI operations.
+
+STEP 12: User translates the document into any of the eight target languages.
+
+STEP 13: User generates a summary.
+
+STEP 14: User extracts important information.
+
+STEP 15: User asks questions about the document.
+
+STEP 16: AI answers with source references.
+
+STEP 17: User listens to the Kannada text.
+
+STEP 18: User exports the processed document.
+
+STEP 19: The document is saved in the searchable library.
+
+STEP 20: The saved document and extracted text remain available offline where supported.
+
+This workflow must work without requiring the user to upload the same document repeatedly.
+
+# 8. BACKEND AND DATA MODEL
+
+Create appropriate data structures for:
+
+**Document**
+- id
+- filename
+- fileType
+- uploadDate
+- pageCount
+- originalFile
+- enhancedFiles
+- processingStatus
+- documentCategory
+
+**OCR Result**
+- documentId
+- pageNumber
+- originalExtractedText
+- correctedText
+- detectedLanguage
+- confidenceInformation
+- uncertainWords
+- sourceRegions
+
+**Translation**
+- documentId
+- sourceLanguage
+- targetLanguage
+- translatedText
+- creationDate
+
+**AI Summary**
+- documentId
+- summaryType
+- summaryText
+- keyPoints
+
+**Extracted Information**
+- documentId
+- names
+- organizations
+- dates
+- addresses
+- amounts
+- deadlines
+- sourceReferences
+
+**Conversation**
+- documentId
+- messages
+- sourceReferences
+- creationDate
+
+**User Preferences**
+- theme
+- accentColor
+- language
+- accessibilityPreferences
+
+Use appropriate relationships and validation.
+
+# 9. SECURITY AND RELIABILITY
+
+Implement:
+- Server-side API key handling.
+- File type validation.
+- File size validation.
+- Safe error handling.
+- Input sanitization.
+- Secure document access.
+- Proper deletion behaviour.
+- No exposure of API keys.
+- No unnecessary personal information collection.
+- Clear processing states.
+- Retry mechanisms for recoverable failures.
+- Proper API response validation.
+
+Never display successful results when the underlying operation failed.
+
+Never use hardcoded OCR text, fake translations, fake AI summaries, fake confidence scores or fabricated document metadata.
+
+If a service is unavailable, explain the failure and provide an appropriate retry option.
+
+# 10. IMPLEMENTATION QUALITY REQUIREMENTS
+
+The generated application must satisfy these conditions:
+
+1. Every navigation item must open a functioning view.
+2. Every button must perform its intended action.
+3. Every input must accept and validate appropriate data.
+4. Uploaded files must actually be processed.
+5. OCR must use actual AI processing.
+6. Translation must use actual AI processing.
+7. Summaries must use actual document content.
+8. Ask Your Document must use the selected document's content.
+9. Source references must correspond to actual extracted text.
+10. Export must generate valid downloadable files.
+11. Theme preferences must persist.
+12. Accent color preferences must persist.
+13. Offline access must work for genuinely cached content.
+14. The application must not crash when a file is invalid.
+15. All major screens must be responsive.
+16. All important operations must show loading and error states.
+17. Do not leave placeholder pages for features presented as implemented.
+18. Do not silently substitute mock functionality for real AI functionality.
+
+If any requested capability cannot be fully implemented with the available APIs, implement the strongest honest working version and clearly identify its limitation.
+
+# 11. TESTING AND ACCEPTANCE CRITERIA
+
+After implementation, test the application.
+
+Test with:
+- A clear printed Kannada document.
+- A low-quality Kannada document.
+- A mixed Kannada-English document.
+- A multi-page PDF.
+- A document with faded text.
+- A document containing names and dates.
+- A document containing complex Kannada sentences.
+
+Verify:
+
+- Upload works.
+- PDF pages render.
+- Kannada OCR extracts readable Unicode.
+- Restoration produces an actual enhanced image.
+- OCR editor saves corrections.
+- Uncertain text is identified.
+- All eight translation targets are selectable.
+- Summary uses the uploaded document.
+- Ask Your Document answers from actual content.
+- Source references point to supporting passages.
+- Information extraction identifies available fields.
+- Voice reader produces playable audio or a clearly reported fallback.
+- Export files open correctly.
+- Document library saves and retrieves documents.
+- Offline mode provides access to cached content.
+- Light/dark mode works.
+- All nine custom accent colors work.
+- The interface works on different screen sizes.
+
+Fix errors discovered during testing.
+
+Do not declare a feature complete simply because its UI has been created.
+
+# 12. DEVELOPMENT PRIORITIES
+
+Build in the following implementation order:
+
+PHASE 1 — Application foundation:
+- Architecture.
+- Design system.
+- Navigation.
+- Dashboard.
+- Theme system.
+- Custom color selector.
+
+PHASE 2 — Digitization:
+- Document upload.
+- PDF/image preview.
+- Kannada OCR.
+- Document enhancement.
+- OCR verification.
+
+PHASE 3 — OCR intelligence:
+- Confidence visualization.
+- Recovery Intelligence.
+- OCR Error Intelligence.
+
+PHASE 4 — Language capabilities:
+- Eight-language translation.
+- Simple-language mode.
+- Kannada Voice Reader.
+
+PHASE 5 — AI intelligence:
+- Summaries.
+- Smart Information Extraction.
+- Ask Your Document.
+- Source-Linked AI Answers.
+- Document Understanding Modes.
+
+PHASE 6 — Document management:
+- Searchable library.
+- Export Centre.
+- Offline functionality.
+
+PHASE 7 — Quality assurance:
+- Integration testing.
+- Error fixing.
+- UI refinement.
+- Responsive testing.
+- Final acceptance testing.
+
+Prioritize a working end-to-end digitization workflow before expanding secondary features.
+
+# 13. FINAL DELIVERABLE
+
+Deliver a complete working DataKriti MVP with:
+
+- Functional frontend.
+- Functional backend.
+- Real Gemini AI integration.
+- Kannada document OCR.
+- Image enhancement.
+- OCR verification.
+- Eight-language translation.
+- AI document understanding.
+- Voice reading.
+- Document storage.
+- Export functionality.
+- Offline access for cached content.
+- Customizable UI.
+- Light and dark modes.
+- Responsive design.
+- Clean project structure.
+- Setup instructions.
+- Environment variable documentation.
+- README.
+- Testing instructions.
+
+The application must be ready for a live hackathon demonstration.
+
+# 14. IMPORTANT INSTRUCTIONS TO THE AI BUILDER
+
+Follow these rules throughout development:
+
+- Think like an experienced product engineering team.
+- Build a coherent product, not disconnected feature demos.
+- Prioritize functionality over the number of screens.
+- Prioritize Kannada document accuracy and verification.
+- Preserve user-uploaded original documents.
+- Use real AI integrations.
+- Keep the architecture modular.
+- Use consistent UI components.
+- Do not generate unnecessary features outside the defined scope.
+- Do not remove requested features without explaining why.
+- Do not replace complex functionality with fake buttons.
+- Do not stop after creating the dashboard.
+- Do not claim that the application is fully functional until the major acceptance tests have passed.
+
+If implementation is too large for one generation, complete it in logical phases while preserving the existing code and working functionality.
+
+At the end of each phase:
+1. Explain what was implemented.
+2. Identify which features are genuinely working.
+3. Identify any missing credentials or configuration.
+4. Run available tests.
+5. Fix errors before moving forward.
+
+**FINAL OBJECTIVE:**
+
+Build DataKriti as a beautiful, reliable and genuinely functional AI-powered Kannada Document Digitization and Intelligence Platform.
+
+The final experience should demonstrate how an ordinary Kannada document can be transformed into restored, verified, searchable, translated, understandable and accessible digital knowledge.
+
+Make the product memorable, technically credible, user-friendly and impressive enough for a competitive hackathon demonstration.

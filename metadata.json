@@ -1,0 +1,8 @@
+{
+  "name": "DataKriti - Kannada Document Intelligence Platform",
+  "description": "AI-powered Kannada document digitization, restoration, OCR verification, 8-language translation, intelligence extraction, and voice reader.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

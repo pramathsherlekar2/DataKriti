@@ -1,0 +1,277 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Centralized Theme Tokens - Default: Royal Amethyst Purple (Light) */
+    --app-background: #F7F4EE;
+    --sidebar-background: #222A48;
+    --sidebar-border: #2E3860;
+    --sidebar-text: #F3F1FA;
+    --sidebar-text-muted: #A89BEA;
+    --sidebar-active-bg: #7C3AED;
+    --sidebar-active-text: #FFFFFF;
+    --header-background: #FFFFFF;
+    --header-border: #E3DDD2;
+    --surface-primary: #FFFFFF;
+    --surface-secondary: #F7F4EE;
+    --surface-elevated: #F1ECE2;
+    --card-background: #FFFFFF;
+    --input-background: #FAF8F5;
+    --input-border: #E3DDD2;
+    --border-color: #D8D0C2;
+    --border-subtle: #E8E2D7;
+    --text-primary: #1C2337;
+    --text-secondary: #575E75;
+    --text-muted: #858B9E;
+    --accent-primary: #7C3AED;
+    --accent-hover: #6D28D9;
+    --accent-subtle: rgba(124, 58, 237, 0.12);
+    --accent-ring: rgba(124, 58, 237, 0.35);
+    --active-navigation: #7C3AED;
+    --button-background: #7C3AED;
+    --button-text: #FFFFFF;
+    --button-hover: #6D28D9;
+    --selection-background: #E9E4F9;
+    --badge-bg: #F1ECE2;
+    --badge-text: #7C3AED;
+
+    /* Legacy compatibility aliases */
+    --bg-main: var(--app-background);
+    --bg-surface: var(--surface-primary);
+    --bg-elevated: var(--surface-elevated);
+    --border-strong: var(--border-color);
+    --accent-color: var(--accent-primary);
+    --gold-accent: #D6A76C;
+    --sage-accent: #DCE8DE;
+    --midnight: #222A48;
+  }
+
+  .dark {
+    /* Centralized Theme Tokens - Default: Royal Amethyst Purple (Dark) */
+    --app-background: #131623;
+    --sidebar-background: #1A1E2F;
+    --sidebar-border: #2B3147;
+    --sidebar-text: #F3F1FA;
+    --sidebar-text-muted: #949DB8;
+    --sidebar-active-bg: #7C3AED;
+    --sidebar-active-text: #FFFFFF;
+    --header-background: #1A1E2F;
+    --header-border: #2B3147;
+    --surface-primary: #1E2235;
+    --surface-secondary: #24283D;
+    --surface-elevated: #2D334C;
+    --card-background: #1E2235;
+    --input-background: #161927;
+    --input-border: #363D5A;
+    --border-color: #2F354F;
+    --border-subtle: #252B42;
+    --text-primary: #F3F1FA;
+    --text-secondary: #B1B7CC;
+    --text-muted: #818AA3;
+    --accent-primary: #8B5CF6;
+    --accent-hover: #7C3AED;
+    --accent-subtle: rgba(139, 92, 246, 0.22);
+    --accent-ring: rgba(139, 92, 246, 0.45);
+    --active-navigation: #8B5CF6;
+    --button-background: #7C3AED;
+    --button-text: #FFFFFF;
+    --button-hover: #8B5CF6;
+    --selection-background: #3D366B;
+    --badge-bg: #2D334C;
+    --badge-text: #DDD6FE;
+
+    /* Legacy compatibility aliases */
+    --bg-main: var(--app-background);
+    --bg-surface: var(--surface-primary);
+    --bg-elevated: var(--surface-elevated);
+    --border-strong: var(--border-color);
+    --accent-color: var(--accent-primary);
+    --gold-accent: #E5BE84;
+    --sage-accent: #334438;
+    --midnight: #191E33;
+  }
+
+  html, body, #root {
+    background-color: var(--app-background);
+    color: var(--text-primary);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    min-height: 100vh;
+  }
+
+  .font-kannada {
+    font-family: 'Noto Sans Kannada', 'Noto Serif Kannada', sans-serif;
+  }
+
+  .font-kannada-serif {
+    font-family: 'Noto Serif Kannada', serif;
+  }
+
+  /* Universal Custom Scrollbars Tinted to Current Theme */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-primary);
+  }
+
+  ::selection {
+    background-color: var(--selection-background);
+    color: var(--text-primary);
+  }
+}
+
+/* =========================================================================
+   Universal Full-Interface Color Theme Bindings
+   These map components directly to the active theme palette so that ALL 9 themes
+   (Red, Yellow, Green, Blue, Black, Pink, Purple, White, Orange) transform the entire app.
+   ========================================================================= */
+
+/* 1. App shell background */
+main {
+  background-color: var(--app-background);
+}
+
+/* 2. Sidebar */
+aside {
+  background-color: var(--sidebar-background) !important;
+  border-color: var(--sidebar-border) !important;
+  color: var(--sidebar-text) !important;
+}
+
+aside .text-\[\#858B9E\],
+aside .text-\[\#949DB8\],
+aside .text-\[\#575E75\],
+aside .dark\:text-\[\#949DB8\],
+aside .dark\:text-\[\#9CA3AF\] {
+  color: var(--sidebar-text-muted) !important;
+}
+
+aside .text-\[\#1C2337\],
+aside .text-\[\#F3F1FA\],
+aside .text-\[\#222A48\],
+aside .dark\:text-\[\#F3F1FA\] {
+  color: var(--sidebar-text) !important;
+}
+
+aside .border-\[\#E3DDD2\],
+aside .dark\:border-\[\#2B3147\],
+aside .dark\:border-\[\#2D334C\] {
+  border-color: var(--sidebar-border) !important;
+}
+
+aside .bg-\[\#F7F4EE\],
+aside .dark\:bg-\[\#22263A\] {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  border-color: var(--sidebar-border) !important;
+}
+
+/* 3. Header */
+header {
+  background-color: var(--header-background) !important;
+  border-color: var(--header-border) !important;
+}
+
+/* 4. Cards and Panels */
+.bg-white,
+.dark\:bg-\[\#1E2235\],
+.dark\:bg-\[\#151827\],
+.dark\:bg-\[\#1A1E2F\],
+.dark\:bg-\[\#1E293B\],
+.theme-card {
+  background-color: var(--card-background) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* 5. Secondary Surfaces: Inputs, stats, previews, tables */
+.bg-\[\#F7F4EE\],
+.bg-\[\#FAF8F5\],
+.bg-\[\#F8FAFC\],
+.dark\:bg-\[\#22263A\],
+.dark\:bg-\[\#181B2A\],
+.dark\:bg-\[\#24283D\],
+.theme-surface-secondary {
+  background-color: var(--surface-secondary) !important;
+  border-color: var(--border-subtle) !important;
+}
+
+/* 6. Elevated Surfaces: Chips, pill tags, badges */
+.bg-\[\#F1ECE2\],
+.dark\:bg-\[\#282D44\],
+.dark\:bg-\[\#2D334C\],
+.theme-surface-elevated {
+  background-color: var(--surface-elevated) !important;
+}
+
+/* 7. Borders & Dividers */
+.border-\[\#E3DDD2\],
+.border-\[\#CEC5B8\],
+.dark\:border-\[\#2D334C\],
+.dark\:border-\[\#2B3147\],
+.dark\:border-\[\#2E354D\],
+.dark\:border-\[\#3F4667\],
+.theme-border {
+  border-color: var(--border-color) !important;
+}
+
+/* 8. Text Colors */
+.text-\[\#1C2337\],
+.dark\:text-\[\#F3F1FA\],
+.theme-text-primary {
+  color: var(--text-primary) !important;
+}
+
+.text-\[\#575E75\],
+.dark\:text-\[\#B1B7CC\],
+.theme-text-secondary {
+  color: var(--text-secondary) !important;
+}
+
+.text-\[\#858B9E\],
+.dark\:text-\[\#949DB8\],
+.dark\:text-\[\#7E859E\],
+.theme-text-muted {
+  color: var(--text-muted) !important;
+}
+
+/* 9. Form Inputs, Selects, and Textareas */
+input[type="text"],
+input[type="search"],
+input[type="number"],
+input[type="range"],
+textarea,
+select {
+  background-color: var(--input-background) !important;
+  border-color: var(--input-border) !important;
+  color: var(--text-primary) !important;
+}
+
+select option {
+  background-color: var(--card-background) !important;
+  color: var(--text-primary) !important;
+}
+
+/* 10. Modals & Dialog Windows */
+.modal-window,
+[role="dialog"] > div {
+  background-color: var(--card-background) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* 11. Custom Interactive Highlights */
+.glow-accent {
+  box-shadow: 0 0 20px -3px var(--accent-subtle);
+}
+
+.kannada-badge {
+  background: var(--surface-elevated);
+  border: 1px solid var(--border-color);
+  color: var(--accent-primary);
+}
