@@ -4,7 +4,6 @@ import {
   Copy,
   Check,
   Download,
-  Volume2,
   Sparkles,
   RefreshCw,
   BookOpen,
@@ -15,7 +14,6 @@ import {
 import { useApp } from '../../context/AppContext';
 import { ACCENT_COLORS, TARGET_LANGUAGES } from '../../constants/accentColors';
 import { translateDocumentText } from '../../services/api';
-import { voiceReader } from '../../services/voiceReader';
 import { exportTranslationText } from '../../services/exportService';
 
 export const TranslationView: React.FC = () => {
@@ -123,14 +121,6 @@ export const TranslationView: React.FC = () => {
       showToast(`Copied ${selectedLanguage} translation`, 'info');
       setTimeout(() => setCopied(false), 2000);
     }
-  };
-
-  const handleSpeakTranslation = () => {
-    if (!currentTranslation?.translatedText) return;
-    const targetObj = TARGET_LANGUAGES.find((l) => l.name === selectedLanguage);
-    const langCode = targetObj ? `${targetObj.code}-IN` : 'en-US';
-    voiceReader.playText(currentTranslation.translatedText, langCode);
-    showToast(`Playing ${selectedLanguage} audio`, 'info');
   };
 
   return (
@@ -292,13 +282,6 @@ export const TranslationView: React.FC = () => {
             <div className="flex items-center gap-2">
               {currentTranslation && (
                 <>
-                  <button
-                    onClick={handleSpeakTranslation}
-                    className="p-1.5 rounded-lg border border-[#E3DDD2] dark:border-[#2D334C] hover:bg-black/5 dark:hover:bg-white/5 text-[#575E75] dark:text-[#9CA3AF]"
-                    title={`Listen to ${selectedLanguage}`}
-                  >
-                    <Volume2 className="w-3.5 h-3.5" />
-                  </button>
                   <button
                     onClick={handleCopy}
                     className="p-1.5 rounded-lg border border-[#E3DDD2] dark:border-[#2D334C] hover:bg-black/5 dark:hover:bg-white/5 text-[#575E75] dark:text-[#9CA3AF]"

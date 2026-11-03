@@ -6,7 +6,7 @@ import {
   Languages,
   Sparkles,
   MessageSquare,
-  Volume2,
+  GitCompare,
   FolderOpen,
   ArrowRight,
   TrendingUp,
@@ -174,7 +174,7 @@ export const DashboardView: React.FC = () => {
           <span className="text-xs font-kannada font-normal text-[#858B9E]">(ಕಾರ್ಯಕ್ಷೇತ್ರಗಳು)</span>
         </h2>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3.5">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5">
           <button
             onClick={() => setActiveView('restoration')}
             className="p-4 rounded-2xl text-left bg-white dark:bg-[#1E2235] border border-[#E3DDD2] dark:border-[#2D334C] hover:border-indigo-400 dark:hover:border-indigo-500 transition-all hover:shadow-md group"
@@ -218,16 +218,30 @@ export const DashboardView: React.FC = () => {
           </button>
 
           <button
-            onClick={() => setActiveView('voice')}
+            onClick={() => setActiveView('comparison')}
             className="p-4 rounded-2xl text-left bg-white dark:bg-[#1E2235] border border-[#E3DDD2] dark:border-[#2D334C] hover:border-blue-400 dark:hover:border-blue-500 transition-all hover:shadow-md group"
           >
             <div className="w-9 h-9 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-              <Volume2 className="w-5 h-5" />
+              <GitCompare className="w-5 h-5" />
             </div>
-            <h3 className="font-semibold text-sm text-[#1C2337] dark:text-[#F3F1FA]">Kannada Voice Reader</h3>
-            <p className="text-xs text-[#858B9E] dark:text-[#9CA3AF] mt-1 font-kannada">ಧ್ವನಿ ವಾಚನ</p>
+            <h3 className="font-semibold text-sm text-[#1C2337] dark:text-[#F3F1FA]">Document Comparison</h3>
+            <p className="text-xs text-[#858B9E] dark:text-[#9CA3AF] mt-1 font-kannada">ದಾಖಲೆ ಹೋಲಿಕೆ</p>
             <span className="inline-block mt-2 text-[11px] font-medium text-blue-600 dark:text-blue-400">
-              Listen to document &rarr;
+              Diff & change detection &rarr;
+            </span>
+          </button>
+
+          <button
+            onClick={() => setActiveView('authenticity')}
+            className="p-4 rounded-2xl text-left bg-white dark:bg-[#1E2235] border border-[#E3DDD2] dark:border-[#2D334C] hover:border-rose-400 dark:hover:border-rose-500 transition-all hover:shadow-md group"
+          >
+            <div className="w-9 h-9 rounded-xl bg-rose-500/10 text-rose-600 dark:text-rose-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+              <ShieldCheck className="w-5 h-5" />
+            </div>
+            <h3 className="font-semibold text-sm text-[#1C2337] dark:text-[#F3F1FA]">Authenticity & Tampering</h3>
+            <p className="text-xs text-[#858B9E] dark:text-[#9CA3AF] mt-1 font-kannada">ದೃಢೀಕರಣ ತಪಾಸಣೆ</p>
+            <span className="inline-block mt-2 text-[11px] font-medium text-rose-600 dark:text-rose-400">
+              Forensic inspection &rarr;
             </span>
           </button>
         </div>

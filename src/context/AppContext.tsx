@@ -20,7 +20,8 @@ export type NavigationTab =
   | 'translation'
   | 'intelligence'
   | 'ask'
-  | 'voice'
+  | 'comparison'
+  | 'authenticity'
   | 'library'
   | 'export'
   | 'settings';

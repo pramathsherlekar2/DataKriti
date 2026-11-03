@@ -4,6 +4,8 @@ import {
   OCRResult,
   RecoveryAssessment,
   SimplificationResult,
+  DocumentComparisonResult,
+  AuthenticityReport,
 } from '../types';
 
 export class ApiError extends Error {
@@ -130,30 +132,43 @@ export async function scanTextForErrors(
   return await res.json();
 }
 
-export async function synthesizeKannadaSpeech(
-  text: string,
-  voiceName = 'Kore',
-  speechStyle?: string
-): Promise<{
-  audioBase64: string;
-  mimeType: string;
-  durationEstimateSec: number;
-  cached?: boolean;
-  durationMs?: number;
-}> {
-  if (!navigator.onLine) {
-    throw new ApiError('Speech synthesis requires an active network connection.');
-  }
-
-  const res = await fetch('/api/gemini/tts', {
+export async function compareDocumentsApi(
+  doc1Text: string,
+  doc2Text: string,
+  doc1Title = 'Original Document',
+  doc2Title = 'Revised Document',
+  language = 'Kannada'
+): Promise<DocumentComparisonResult & { durationMs?: number; cached?: boolean }> {
+  const res = await fetch('/api/gemini/compare', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ text, voiceName, speechStyle }),
+    body: JSON.stringify({ doc1Text, doc2Text, doc1Title, doc2Title, language }),
   });
 
   if (!res.ok) {
     const errorBody = await res.json().catch(() => ({}));
-    throw new ApiError(errorBody.error || `Speech synthesis failed (${res.status})`, res.status);
+    throw new ApiError(errorBody.error || `Document comparison failed (${res.status})`, res.status);
+  }
+
+  return await res.json();
+}
+
+export async function analyzeAuthenticityApi(
+  documentId: string,
+  documentTitle: string,
+  imageBase64?: string,
+  extractedText = '',
+  fileMetadata: any = {}
+): Promise<AuthenticityReport & { durationMs?: number; cached?: boolean }> {
+  const res = await fetch('/api/gemini/authenticity', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ documentId, documentTitle, imageBase64, extractedText, fileMetadata }),
+  });
+
+  if (!res.ok) {
+    const errorBody = await res.json().catch(() => ({}));
+    throw new ApiError(errorBody.error || `Authenticity analysis failed (${res.status})`, res.status);
   }
 
   return await res.json();

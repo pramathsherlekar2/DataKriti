@@ -130,13 +130,14 @@
 
 /* =========================================================================
    Universal Full-Interface Color Theme Bindings
-   These map components directly to the active theme palette so that ALL 9 themes
-   (Red, Yellow, Green, Blue, Black, Pink, Purple, White, Orange) transform the entire app.
+   Ensures ALL 9 color themes (Red, Yellow, Green, Blue, Black, Pink, Purple, White, Orange)
+   adapt the entire app surface across Light and Dark modes.
    ========================================================================= */
 
 /* 1. App shell background */
-main {
-  background-color: var(--app-background);
+main, [data-theme-root] {
+  background-color: var(--app-background) !important;
+  color: var(--text-primary) !important;
 }
 
 /* 2. Sidebar */
@@ -177,6 +178,7 @@ aside .dark\:bg-\[\#22263A\] {
 header {
   background-color: var(--header-background) !important;
   border-color: var(--header-border) !important;
+  color: var(--text-primary) !important;
 }
 
 /* 4. Cards and Panels */
@@ -230,6 +232,7 @@ header {
 
 .text-\[\#575E75\],
 .dark\:text-\[\#B1B7CC\],
+.dark\:text-\[\#9CA3AF\],
 .theme-text-secondary {
   color: var(--text-secondary) !important;
 }
@@ -263,9 +266,35 @@ select option {
 [role="dialog"] > div {
   background-color: var(--card-background) !important;
   border-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
 }
 
-/* 11. Custom Interactive Highlights */
+/* 11. Tables and Data Displays */
+table thead tr {
+  background-color: var(--surface-secondary) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-secondary) !important;
+}
+
+table tbody tr {
+  border-color: var(--border-subtle) !important;
+}
+
+table tbody tr:hover {
+  background-color: var(--surface-secondary) !important;
+}
+
+/* 12. Buttons & Actions */
+button.theme-primary-btn {
+  background-color: var(--button-background) !important;
+  color: var(--button-text) !important;
+}
+
+button.theme-primary-btn:hover {
+  background-color: var(--button-hover) !important;
+}
+
+/* 13. Interactive Accents */
 .glow-accent {
   box-shadow: 0 0 20px -3px var(--accent-subtle);
 }
@@ -274,4 +303,10 @@ select option {
   background: var(--surface-elevated);
   border: 1px solid var(--border-color);
   color: var(--accent-primary);
+}
+
+/* Focus and Outline States */
+:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 1px;
 }

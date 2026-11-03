@@ -241,6 +241,23 @@ export const VerificationView: React.FC = () => {
     setActiveUncertainWord(null);
   };
 
+  // Reject / Dismiss suggestion and keep original text
+  const handleRejectSuggestion = () => {
+    if (!activeUncertainWord) return;
+    const origWord = activeUncertainWord.word;
+    if (ocr) {
+      const updatedWords = (ocr.uncertainWords || []).map((w) =>
+        w.word === origWord ? { ...w, isCorrected: true, userCorrection: origWord } : w
+      );
+      const updatedOcr = { ...ocr, uncertainWords: updatedWords };
+      const updatedPages = [...activeDocument.pages];
+      updatedPages[activeDocument.currentPageIndex] = { ...page, ocrResult: updatedOcr };
+      updateDocument({ ...activeDocument, pages: updatedPages });
+    }
+    showToast(`Dismissed suggestion, kept original "${origWord}"`, 'info');
+    setActiveUncertainWord(null);
+  };
+
   const imageSrc = page.enhancedImage || page.originalImage;
   const uncertainCount = ocr?.uncertainWords?.filter((w) => !w.isCorrected)?.length || 0;
 
@@ -600,6 +617,13 @@ export const VerificationView: React.FC = () => {
                       className="px-3 py-1.5 rounded-xl text-xs font-semibold text-white bg-[#7C3AED] hover:bg-[#6D28D9] disabled:opacity-40"
                     >
                       Apply Custom
+                    </button>
+                    <button
+                      onClick={handleRejectSuggestion}
+                      className="px-3 py-1.5 rounded-xl text-xs font-semibold border border-rose-300 dark:border-rose-800 text-rose-700 dark:text-rose-300 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors"
+                      title="Dismiss suggestion and keep original OCR word"
+                    >
+                      Keep Original
                     </button>
                   </div>
                 </div>

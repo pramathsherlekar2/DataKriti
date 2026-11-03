@@ -9,7 +9,8 @@ import { VerificationView } from './components/views/VerificationView';
 import { TranslationView } from './components/views/TranslationView';
 import { AIIntelligenceView } from './components/views/AIIntelligenceView';
 import { AskDocumentView } from './components/views/AskDocumentView';
-import { VoiceReaderView } from './components/views/VoiceReaderView';
+import { ComparisonView } from './components/views/ComparisonView';
+import { AuthenticityView } from './components/views/AuthenticityView';
 import { LibraryView } from './components/views/LibraryView';
 import { ExportView } from './components/views/ExportView';
 import { SettingsView } from './components/views/SettingsView';
@@ -86,7 +87,8 @@ const MainLayout: React.FC = () => {
           {activeView === 'translation' && <TranslationView />}
           {activeView === 'intelligence' && <AIIntelligenceView />}
           {activeView === 'ask' && <AskDocumentView />}
-          {activeView === 'voice' && <VoiceReaderView />}
+          {activeView === 'comparison' && <ComparisonView />}
+          {activeView === 'authenticity' && <AuthenticityView />}
           {activeView === 'library' && <LibraryView />}
           {activeView === 'export' && <ExportView />}
           {activeView === 'settings' && <SettingsView />}

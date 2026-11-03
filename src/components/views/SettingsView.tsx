@@ -54,7 +54,7 @@ export const SettingsView: React.FC = () => {
   const handleResetDefaults = () => {
     setTheme('light');
     setAccentColor('purple');
-    updatePreferences({ kannadaVoiceSpeed: 1.0, autoAssessOnUpload: true });
+    updatePreferences({ autoAssessOnUpload: true });
     showToast('Reset interface settings to default theme and accent', 'info');
   };
 

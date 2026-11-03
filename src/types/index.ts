@@ -221,7 +221,140 @@ export interface DocumentItem {
 export interface UserPreferences {
   theme: 'light' | 'dark';
   accentColor: AccentColorKey;
-  kannadaVoiceSpeed: number; // 0.5 to 1.5
+  kannadaVoiceSpeed?: number;
   autoAssessOnUpload: boolean;
   offlineSyncEnabled: boolean;
 }
+
+// ==========================================
+// FEATURE 1: Smart Document Comparison Types
+// ==========================================
+export type ComparisonChangeType = 'added' | 'removed' | 'modified';
+
+export type ComparisonCategory =
+  | 'directive'
+  | 'date_deadline'
+  | 'financial_number'
+  | 'eligibility'
+  | 'administrative_ref'
+  | 'general_text';
+
+export interface DetectedChange {
+  id: string;
+  type: ComparisonChangeType;
+  category: ComparisonCategory;
+  originalText?: string;
+  revisedText?: string;
+  explanationKannada: string;
+  explanationEnglish: string;
+  explanationHindi: string;
+  significance: 'high' | 'medium' | 'low';
+  impactReason: string;
+  doc1Page?: number;
+  doc2Page?: number;
+  sectionName?: string;
+}
+
+export interface ComparisonSummary {
+  totalChanges: number;
+  addedCount: number;
+  removedCount: number;
+  modifiedCount: number;
+  dateChangesCount: number;
+  deadlineChangesCount: number;
+  eligibilityChangesCount: number;
+  financialChangesCount: number;
+  instructionChangesCount: number;
+  overallAssessmentKannada: string;
+  overallAssessmentEnglish: string;
+  overallAssessmentHindi?: string;
+  isSubstantiallyIdentical: boolean;
+}
+
+export interface DocumentComparisonResult {
+  id: string;
+  doc1Id: string;
+  doc1Name: string;
+  doc2Id: string;
+  doc2Name: string;
+  comparisonDate: string;
+  summary: ComparisonSummary;
+  changes: DetectedChange[];
+  doc1Text: string;
+  doc2Text: string;
+}
+
+// ========================================================
+// FEATURE 2: Smart Authenticity & Tampering Detection Types
+// ========================================================
+export type AuthenticityClassification =
+  | 'no_suspicious_indicators'
+  | 'potential_inconsistencies'
+  | 'significant_suspicious_indicators'
+  | 'insufficient_evidence';
+
+export interface MetadataFinding {
+  property: string;
+  value: string;
+  status: 'normal' | 'suspicious' | 'missing' | 'informative';
+  details: string;
+}
+
+export interface SuspiciousRegion {
+  id: string;
+  boundingBox: [number, number, number, number]; // [ymin, xmin, ymax, xmax] 0-1000
+  pageNumber: number;
+  issueType:
+    | 'font_inconsistency'
+    | 'alignment_anomaly'
+    | 'spacing_irregularity'
+    | 'image_splice_or_patch'
+    | 'ocr_discrepancy'
+    | 'tampered_numeral_or_date';
+  severity: 'low' | 'medium' | 'high';
+  title: string;
+  evidence: string;
+  explanationKannada: string;
+  explanationEnglish: string;
+  recommendation: string;
+}
+
+export interface VisualConsistencyItem {
+  aspect: string;
+  observation: string;
+  status: 'consistent' | 'minor_anomaly' | 'flagged';
+  explanation: string;
+}
+
+export interface OCRDiscrepancyItem {
+  regionSnippet: string;
+  visualAppearance: string;
+  ocrDetected: string;
+  discrepancyType: string;
+  severity: 'low' | 'medium' | 'high';
+}
+
+export interface DocumentStructureItem {
+  indicator: string;
+  finding: string;
+  riskLevel: 'normal' | 'warning' | 'critical';
+}
+
+export interface AuthenticityReport {
+  id: string;
+  documentId: string;
+  documentName: string;
+  analysisDate: string;
+  classification: AuthenticityClassification;
+  confidenceScore: number; // 0-100
+  summaryStatementEnglish: string;
+  summaryStatementKannada: string;
+  metadataFindings: MetadataFinding[];
+  visualConsistencyFindings: VisualConsistencyItem[];
+  suspiciousRegions: SuspiciousRegion[];
+  ocrDiscrepancies: OCRDiscrepancyItem[];
+  structuralFindings: DocumentStructureItem[];
+  recommendations: string[];
+  technicalLimitations: string[];
+}
+

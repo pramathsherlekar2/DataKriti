@@ -4,7 +4,6 @@ import {
   Send,
   Sparkles,
   Bookmark,
-  Volume2,
   Copy,
   Check,
   AlertCircle,
@@ -19,7 +18,6 @@ import { useApp } from '../../context/AppContext';
 import { ACCENT_COLORS } from '../../constants/accentColors';
 import { askDocument } from '../../services/api';
 import { ChatMessage } from '../../types';
-import { voiceReader } from '../../services/voiceReader';
 
 export const AskDocumentView: React.FC = () => {
   const { activeDocument, updateDocument, setActiveView, preferences, showToast } = useApp();
@@ -154,11 +152,6 @@ export const AskDocumentView: React.FC = () => {
     setCopiedId(id);
     showToast('Answer copied', 'info');
     setTimeout(() => setCopiedId(null), 2000);
-  };
-
-  const handleSpeak = (textToSpeak: string) => {
-    const isKannada = /[\u0C80-\u0CFF]/.test(textToSpeak);
-    voiceReader.playText(textToSpeak, isKannada ? 'kn-IN' : 'en-US');
   };
 
   return (
@@ -306,13 +299,6 @@ export const AskDocumentView: React.FC = () => {
                 {/* Action buttons for assistant answers */}
                 {msg.role === 'assistant' && (
                   <div className="mt-3 flex items-center gap-2 pt-2 border-t border-black/5 dark:border-white/5">
-                    <button
-                      onClick={() => handleSpeak(msg.textKannada || msg.text)}
-                      className="p-1 rounded hover:bg-black/5 dark:hover:bg-white/10 text-[#858B9E]"
-                      title="Read aloud"
-                    >
-                      <Volume2 className="w-3.5 h-3.5" />
-                    </button>
                     <button
                       onClick={() => handleCopy(msg.text, msg.id)}
                       className="p-1 rounded hover:bg-black/5 dark:hover:bg-white/10 text-[#858B9E]"

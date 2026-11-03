@@ -50,10 +50,15 @@ const VIEW_TITLES: Record<NavigationTab, { title: string; kannada: string; subti
     kannada: 'ದಾಖಲೆಯೊಂದಿಗೆ ಸಂವಾದ (ಪ್ರಶ್ನೋತ್ತರ)',
     subtitle: 'Conversational Q&A strictly grounded in document text with source citations',
   },
-  voice: {
-    title: 'Kannada Voice Reader',
-    kannada: 'ಕನ್ನಡ ಧ್ವನಿ ವಾಚಕ (TTS)',
-    subtitle: 'Natural text-to-speech reading with speed controls and sentence highlighting',
+  comparison: {
+    title: 'Smart Document Comparison & Change Detection',
+    kannada: 'ಸ್ಮಾರ್ಟ್ ದಾಖಲೆ ಹೋಲಿಕೆ ಮತ್ತು ಬದಲಾವಣೆ ಪತ್ತೆ',
+    subtitle: 'Side-by-side difference detection, added/removed/modified clauses, and multilingual change explanations',
+  },
+  authenticity: {
+    title: 'Smart Document Authenticity & Tampering Detection',
+    kannada: 'ದಾಖಲೆ ದೃಢೀಕರಣ ಮತ್ತು ತಿದ್ದುಪಡಿ ತಪಾಸಣೆ',
+    subtitle: 'Evidence-based forensic analysis: metadata, font anomalies, image patches, and OCR discrepancies',
   },
   library: {
     title: 'Searchable Document Library',
